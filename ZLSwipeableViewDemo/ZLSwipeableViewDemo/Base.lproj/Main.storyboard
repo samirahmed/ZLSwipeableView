@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C78c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -46,22 +46,22 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0K-0Y-C7k" userLabel="ZLSwipeableView" customClass="ZLSwipeableView">
-                                <rect key="frame" x="36" y="60" width="528" height="442"/>
+                                <rect key="frame" x="16" y="25" width="568" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="a3E-tF-qFC" secondAttribute="centerX" id="7XB-0Q-EsO"/>
-                            <constraint firstItem="a3E-tF-qFC" firstAttribute="top" secondItem="C0K-0Y-C7k" secondAttribute="bottom" constant="40" id="8wZ-F8-gPF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="C0K-0Y-C7k" secondAttribute="trailing" constant="20" id="Fn9-0t-Fn7"/>
-                            <constraint firstItem="C0K-0Y-C7k" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="MSB-Id-IaW"/>
+                            <constraint firstItem="a3E-tF-qFC" firstAttribute="top" secondItem="C0K-0Y-C7k" secondAttribute="bottom" constant="5" id="8wZ-F8-gPF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C0K-0Y-C7k" secondAttribute="trailing" id="Fn9-0t-Fn7"/>
+                            <constraint firstItem="C0K-0Y-C7k" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="MSB-Id-IaW"/>
                             <constraint firstItem="4ra-DQ-XpK" firstAttribute="baseline" secondItem="4QQ-o9-2eD" secondAttribute="baseline" id="NL7-vB-Qh5"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="4ra-DQ-XpK" secondAttribute="bottom" constant="28" id="OeB-yk-jIh"/>
                             <constraint firstItem="4QQ-o9-2eD" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Pfx-Lv-sPH"/>
                             <constraint firstItem="4ra-DQ-XpK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Z0D-uF-dbg"/>
                             <constraint firstItem="4ra-DQ-XpK" firstAttribute="baseline" secondItem="a3E-tF-qFC" secondAttribute="baseline" id="c4W-xR-7lY"/>
-                            <constraint firstItem="C0K-0Y-C7k" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="d1r-l7-bUd"/>
+                            <constraint firstItem="C0K-0Y-C7k" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="5" id="d1r-l7-bUd"/>
                         </constraints>
                     </view>
                     <connections>

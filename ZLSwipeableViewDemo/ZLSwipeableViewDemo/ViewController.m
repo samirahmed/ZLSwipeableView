@@ -52,6 +52,8 @@
 
     // Optional Delegate
     self.swipeableView.delegate = self;
+    self.swipeableView.rotationDegree = 0;
+    self.swipeableView.rotationRelativeYOffsetFromCenter = 0;
 }
 
 - (void)viewDidLayoutSubviews {
