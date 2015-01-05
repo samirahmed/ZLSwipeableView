@@ -90,6 +90,11 @@
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView
+          didPullDown:(UIView *)view {
+    NSLog(@"did pull down and release");
+}
+
+- (void)swipeableView:(ZLSwipeableView *)swipeableView
        didCancelSwipe:(UIView *)view {
     NSLog(@"did cancel swipe");
 }

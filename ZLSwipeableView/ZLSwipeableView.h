@@ -20,6 +20,9 @@
         didSwipeRight:(UIView *)view;
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView
+          didPullDown:(UIView *)view;
+
+- (void)swipeableView:(ZLSwipeableView *)swipeableView
         didCancelSwipe:(UIView *)view;
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView
@@ -78,8 +81,14 @@
 /// Swiped views will be destroyed when they collide with this rect.
 @property (nonatomic) CGRect collisionRect;
 
-/// Mangintude of rotation for swiping views manually
+/// Magnitude of rotation for swiping views manually
 @property (nonatomic) CGFloat manualSwipeRotationRelativeYOffsetFromCenter;
+
+/// Number of Pixels before crossing the pull down threshold
+@property (nonatomic) CGFloat pullDownReleaseThreshold;
+
+/// Degrees of Freedom allowed during pull down and release ^
+@property (nonatomic) CGFloat pullDownDegreesOfFreedom;
 
 /// Discard all swipeable views on the screen.
 - (void)discardAllSwipeableViews;

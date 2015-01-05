@@ -70,12 +70,14 @@ const NSUInteger kNumPrefetchedViews = 3;
 
     self.pushVelocityMagnitude = 1000;
     self.escapeVelocityThreshold = 750;
-    self.relativeDisplacementThreshold = 0.25;
+    self.relativeDisplacementThreshold = 0.5;
 
     self.manualSwipeRotationRelativeYOffsetFromCenter = -0.2;
     self.swipeableViewsCenter =
         CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
     self.collisionRect = [self defaultCollisionRect];
+    self.pullDownDegreesOfFreedom = 60.0f;
+    self.pullDownReleaseThreshold = 75;
 }
 
 - (void)layoutSubviews {
@@ -275,7 +277,11 @@ const NSUInteger kNumPrefetchedViews = 3;
                                        toPoint:self.swipeableViewsCenter];
             [self.animator addBehavior:self.swipeableViewSnapBehavior];
 
-            if (self.delegate &&
+            if ([self isPullDownAndRelease:translation] &&
+                [self.delegate respondsToSelector:@selector(swipeableView: didPullDown:)]){
+                [self.delegate swipeableView:self didPullDown:swipeableView];
+            }
+            else if (self.delegate &&
                 [self.delegate respondsToSelector:@selector(swipeableView:
                                                            didCancelSwipe:)]) {
                 [self.delegate swipeableView:self didCancelSwipe:swipeableView];
@@ -291,6 +297,17 @@ const NSUInteger kNumPrefetchedViews = 3;
                               atLocation:location];
         }
     }
+}
+
+- (BOOL)isPullDownAndRelease:(CGPoint)translation {
+    if (translation.y < self.pullDownReleaseThreshold || translation.y == 0){
+        return FALSE;
+    }
+    
+    CGFloat dx = ABS(translation.x);
+    CGFloat dy = ABS(translation.y);
+    
+    return [self radiansToDegrees:(atan2(dy,dx))] > (self.pullDownDegreesOfFreedom/2.0f);
 }
 
 - (void)swipeTopViewToLeft {
