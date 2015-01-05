@@ -262,17 +262,6 @@ const NSUInteger kNumPrefetchedViews = 3;
                 CGVectorMake(translation.x / translationMagnitude * scale,
                              translation.y / translationMagnitude * scale);
 
-            NSLog(@"Push Direction x= %f y= %f", direction.dx, direction.dy);
-            
-//            CGPoint location = CGPointMake(
-//                                           swipeableView.center.x,
-//                                           swipeableView.center.y *
-//                                           (1 + self.manualSwipeRotationRelativeYOffsetFromCenter));
-//            [self createAnchorViewForCover:swipeableView
-//                                atLocation:location
-//             shouldAttachAnchorViewToPoint:YES];
-
-            
             [self pushAnchorViewForCover:swipeableView
                              inDirection:direction
                         andCollideInRect:self.collisionRect];
@@ -357,8 +346,6 @@ const NSUInteger kNumPrefetchedViews = 3;
         [[UIPushBehavior alloc] initWithItems:@[ view ]
                                          mode:UIPushBehaviorModeInstantaneous];
     pushBehavior.pushDirection = direction;
-   // pushBehavior.magnitude = 2000.0;
-    NSLog(@"dx= %f dy= %f", direction.dx, direction.dy);
 
     return pushBehavior;
 }
@@ -453,7 +440,6 @@ const NSUInteger kNumPrefetchedViews = 3;
     }
     
     [self.animator removeBehavior:self.anchorViewAttachmentBehavior];
-  //  [self.animator removeBehavior:self.swipeableViewAttachmentBehavior];
     
     UICollisionBehavior *collisionBehavior =
         [self collisionBehaviorThatBoundsView:self.anchorView
