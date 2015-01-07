@@ -563,10 +563,14 @@ int signum(float n) { return (n < 0) ? -1 : (n > 0) ? +1 : 0; }
         nextView = [self.dataSource nextViewForSwipeableView:self];
     }
     if (nextView) {
-        [nextView
-            addGestureRecognizer:[[ZLPanGestureRecognizer alloc]
-                                     initWithTarget:self
-                                             action:@selector(handlePan:)]];
+        ZLPanGestureRecognizer* recognizer = [[ZLPanGestureRecognizer alloc]
+                                              initWithTarget:self
+                                              action:@selector(handlePan:)];
+        if (self.gestureRecognizerDelegate){
+            recognizer.delegate = self.gestureRecognizerDelegate;
+        }
+        [nextView addGestureRecognizer:recognizer];
+        
     }
     return nextView;
 }

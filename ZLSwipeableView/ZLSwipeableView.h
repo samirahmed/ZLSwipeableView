@@ -93,6 +93,9 @@
 /// Degrees of Freedom allowed during pull down and release ^
 @property (nonatomic) CGFloat pullDownDegreesOfFreedom;
 
+/// Gesture Recognizer Delegate
+@property (nonatomic) id<UIGestureRecognizerDelegate> gestureRecognizerDelegate;
+
 /// Discard all swipeable views on the screen.
 - (void)discardAllSwipeableViews;
 
