@@ -72,6 +72,7 @@ const NSUInteger kNumPrefetchedViews = 1;
     self.escapeVelocityThreshold = 750;
     self.animatedSwipePushMagnitude = self.escapeVelocityThreshold;
     self.relativeDisplacementThreshold = 0.5;
+    self.minimumDisplacementThreshold = 0.0;
 
     self.manualSwipeRotationRelativeYOffsetFromCenter = -0.2;
     self.swipeableViewsCenter =
@@ -251,7 +252,8 @@ const NSUInteger kNumPrefetchedViews = 1;
         if ((ABS(translation.x) > self.relativeDisplacementThreshold *
                                       self.bounds.size.width // displacement
              ||
-             velocityMagnitude > self.escapeVelocityThreshold) // velocity
+             (velocityMagnitude > self.escapeVelocityThreshold &&
+              ABS(translation.x) > self.minimumDisplacementThreshold)) // velocity
             &&
             (signum(translation.x) == signum(normalizedVelocity.x))    // sign X
             && (signum(translation.y) == signum(normalizedVelocity.y)) // sign Y

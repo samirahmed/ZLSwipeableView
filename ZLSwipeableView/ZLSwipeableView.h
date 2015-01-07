@@ -72,7 +72,10 @@
 /// Magnitude in points per second.
 @property (nonatomic) CGFloat escapeVelocityThreshold;
 
-///
+/// minimum Displacement before swipe is registered, default is zero
+@property (nonatomic) CGFloat minimumDisplacementThreshold;
+
+/// relative Displacement of view (with respect to the views size) - swiping past this will always trigger a swipe
 @property (nonatomic) CGFloat relativeDisplacementThreshold;
 
 /// Magnitude of velocity at which the swiped view will be animated.
