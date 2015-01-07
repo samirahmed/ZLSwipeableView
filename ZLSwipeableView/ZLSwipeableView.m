@@ -70,6 +70,7 @@ const NSUInteger kNumPrefetchedViews = 1;
 
     self.pushVelocityMagnitude = 1000;
     self.escapeVelocityThreshold = 750;
+    self.animatedSwipePushMagnitude = self.escapeVelocityThreshold;
     self.relativeDisplacementThreshold = 0.5;
 
     self.manualSwipeRotationRelativeYOffsetFromCenter = -0.2;
@@ -334,8 +335,9 @@ const NSUInteger kNumPrefetchedViews = 1;
                            atLocation:location
         shouldAttachAnchorViewToPoint:YES
                          withLocation: location];
+    
     CGVector direction =
-        CGVectorMake((left ? -1 : 1) * self.escapeVelocityThreshold, 0);
+        CGVectorMake((left ? -1 : 1) * self.animatedSwipePushMagnitude, 0);
     [self pushAnchorViewForCover:topSwipeableView
                      inDirection:direction
                 andCollideInRect:self.collisionRect];

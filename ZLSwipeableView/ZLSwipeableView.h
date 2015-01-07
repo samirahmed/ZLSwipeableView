@@ -93,6 +93,9 @@
 /// Degrees of Freedom allowed during pull down and release ^
 @property (nonatomic) CGFloat pullDownDegreesOfFreedom;
 
+/// Magnitude in points per second of automated swipe motion - defaults to escape velocity threshold
+@property (nonatomic) CGFloat animatedSwipePushMagnitude;
+
 /// Gesture Recognizer Delegate
 @property (nonatomic) id<UIGestureRecognizerDelegate> gestureRecognizerDelegate;
 
