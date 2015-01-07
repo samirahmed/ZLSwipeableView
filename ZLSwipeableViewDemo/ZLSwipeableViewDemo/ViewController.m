@@ -90,6 +90,11 @@
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView
+          didCollide:(UICollisionBehavior *)collisionBehavior {
+    NSLog(@"did collide");
+}
+
+- (void)swipeableView:(ZLSwipeableView *)swipeableView
           didPullDown:(UIView *)view {
     NSLog(@"did pull down and release");
 }

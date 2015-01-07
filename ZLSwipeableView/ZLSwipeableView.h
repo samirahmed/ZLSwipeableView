@@ -23,6 +23,9 @@
           didPullDown:(UIView *)view;
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView
+           didCollide:(UICollisionBehavior *)collisionBehavior;
+
+- (void)swipeableView:(ZLSwipeableView *)swipeableView
         didCancelSwipe:(UIView *)view;
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView
@@ -102,4 +105,8 @@
 /// Swipe top view to the right programmatically
 - (void)swipeTopViewToRight;
 
+/// Check if current position is in the pull down and release angle
+- (BOOL)isPullingDown:(CGPoint) translation;
+
 @end
+

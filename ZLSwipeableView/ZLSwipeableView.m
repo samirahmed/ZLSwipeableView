@@ -9,7 +9,7 @@
 #import "ZLSwipeableView.h"
 #import "ZLPanGestureRecognizer.h"
 
-const NSUInteger kNumPrefetchedViews = 3;
+const NSUInteger kNumPrefetchedViews = 1;
 
 @interface ZLSwipeableView () <UICollisionBehaviorDelegate,
                                UIDynamicAnimatorDelegate>
@@ -299,15 +299,17 @@ const NSUInteger kNumPrefetchedViews = 3;
     }
 }
 
+- (BOOL)isPullingDown:(CGPoint)translation {
+    CGFloat dx = ABS(translation.x);
+    CGFloat dy = ABS(translation.y);
+    return [self radiansToDegrees:(atan2(dy,dx))] > (self.pullDownDegreesOfFreedom/2.0f);
+}
+
 - (BOOL)isPullDownAndRelease:(CGPoint)translation {
     if (translation.y < self.pullDownReleaseThreshold || translation.y == 0){
         return FALSE;
     }
-    
-    CGFloat dx = ABS(translation.x);
-    CGFloat dy = ABS(translation.y);
-    
-    return [self radiansToDegrees:(atan2(dy,dx))] > (self.pullDownDegreesOfFreedom/2.0f);
+    return [self isPullingDown:translation];
 }
 
 - (void)swipeTopViewToLeft {
@@ -363,7 +365,7 @@ const NSUInteger kNumPrefetchedViews = 3;
         [[UIPushBehavior alloc] initWithItems:@[ view ]
                                          mode:UIPushBehaviorModeInstantaneous];
     pushBehavior.pushDirection = direction;
-
+    
     return pushBehavior;
 }
 
@@ -522,6 +524,10 @@ const NSUInteger kNumPrefetchedViews = 3;
             }
         }
         [view removeFromSuperview];
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(swipeableView:didCollide:)]) {
+            [self.delegate swipeableView:self didCollide: behavior];
     }
 }
 
