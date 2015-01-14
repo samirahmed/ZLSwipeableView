@@ -249,15 +249,13 @@ const NSUInteger kNumPrefetchedViews = 1;
             sqrt(pow(velocity.x, 2) + pow(velocity.y, 2));
         CGPoint normalizedVelocity = CGPointMake(
             velocity.x / velocityMagnitude, velocity.y / velocityMagnitude);
-        if ((ABS(translation.x) > self.relativeDisplacementThreshold *
-                                      self.bounds.size.width // displacement
-             ||
-             (velocityMagnitude > self.escapeVelocityThreshold &&
+        BOOL isPastDisplacement = ABS(translation.x) > self.relativeDisplacementThreshold * self.bounds.size.width; // displacement
+        if (isPastDisplacement || (((velocityMagnitude > self.escapeVelocityThreshold &&
               ABS(translation.x) > self.minimumDisplacementThreshold)) // velocity
             &&
             (signum(translation.x) == signum(normalizedVelocity.x))    // sign X
             && (signum(translation.y) == signum(normalizedVelocity.y)) // sign Y
-            && ABS(normalizedVelocity.y) < 0.8f) { // confine veritcal direction
+            && ABS(normalizedVelocity.y) < 0.8f)) { // confine veritcal direction
             CGFloat scale = velocityMagnitude > self.escapeVelocityThreshold
                                 ? velocityMagnitude
                                 : self.pushVelocityMagnitude;
